@@ -1,5 +1,7 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import SecretStr, PostgresDsn
+from aiogram import Bot
+from aiogram.client.default import DefaultBotProperties
 
 
 class ModelConfig(BaseSettings):
@@ -38,6 +40,12 @@ class Settings(ModelConfig):
     """Класс для данных конфига"""
     
     db_settings: SettingsDb = SettingsDb()
+    token: SecretStr
 
 
 settings = Settings()
+
+bot = Bot(
+    token=settings.token.get_secret_value(), 
+    default=DefaultBotProperties(parse_mode='Markdown')
+)
