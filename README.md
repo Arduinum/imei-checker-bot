@@ -37,3 +37,14 @@ imei-checker-bot - бот для проверки imei телефона.
 
 Оформление основано на https://www.conventionalcommits.org/en/v1.0.0/
 </details>
+
+<details>
+  <summary>
+    <strong>
+      Пример запуска проекта (Debian, Ubuntu) для разработчиков
+    </strong>
+  </summary>
+
+- **Заполните .env**: по образцу документа `.env.example`;
+- **Запустите проект**: `docker compose -f docker-compose.yml --env-file .env up -d`.
+</details>
