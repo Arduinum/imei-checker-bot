@@ -41,7 +41,9 @@ class Settings(ModelConfig):
     
     db_settings: SettingsDb = SettingsDb()
     token: SecretStr
-
+    token_authorization: SecretStr
+    api_url: str
+    service_id: int
 
 settings = Settings()
 
