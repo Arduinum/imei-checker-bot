@@ -1,7 +1,4 @@
-from sqlalchemy.ext.asyncio import (
-    AsyncSession, 
-    AsyncEngine
-)
+from sqlalchemy.ext.asyncio import AsyncSession, AsyncEngine
 from sqlalchemy.ext.asyncio import async_sessionmaker
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy import select
@@ -25,7 +22,7 @@ def get_session(async_engine: AsyncEngine) -> AsyncSession:
             expire_on_commit=False
         )
         return AsyncSessionMaker()
-    # временное решение
+    # Todo - временное решение. Нужно будет отловить конкретные ошибки.
     except Exception as err:
         message = f'Неудалось создать сессию - {err.__class__.__name__}: {err}'
         logger.error(message)

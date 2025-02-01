@@ -1,10 +1,5 @@
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import ( 
-    Integer, 
-    String,
-    DateTime,
-    func
-)
+from sqlalchemy import Integer, String, DateTime, func
 from datetime import datetime
 
 

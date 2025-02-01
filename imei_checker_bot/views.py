@@ -1,5 +1,4 @@
 import aiohttp
-import json
 
 from imei_checker_bot.logger import logger
 from imei_checker_bot.settings import settings
