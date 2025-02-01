@@ -37,7 +37,7 @@ async def get_imei_view(imei: str) -> str | None:
                 
                 for key, value in device_properties.items():
                     str_divice += f'{key}: {value}\n'
-                print(str_divice)
+
                 return str_divice
             else:
                 logger.warning(
