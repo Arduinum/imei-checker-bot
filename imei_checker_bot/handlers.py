@@ -20,7 +20,6 @@ async def start_command(message: Message) -> None:
     if not chat_id:
         await message.answer(text='У вас ограничен доступ к функционалу бота!')
     else:
-        print('else!!!!')
         person_title = f"{message.chat.first_name} {message.chat.last_name}" \
             if message.chat.last_name else message.chat.first_name
         text = ('добро пожаловать в бот IMEI-Checker info:\n\n'

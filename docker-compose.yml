@@ -12,5 +12,18 @@ services:
     volumes:
       - shop_bot_db:/var/lib/postgresql/data
 
+  imei_checker_bot:
+    container_name: imei_checker_bot
+    build:
+      context: .
+    command: sh -c "
+      chmod +x ./wait-for-it.sh &&
+      ./wait-for-it.sh db:${INNER_PORT_DB} --strict &&
+      poetry run alembic upgrade head &&
+      poetry run imei-checker-bot"
+    restart: always
+    depends_on:
+      - db
+
 volumes:
   shop_bot_db:
