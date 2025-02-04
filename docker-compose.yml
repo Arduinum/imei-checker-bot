@@ -1,0 +1,29 @@
+services:
+  db:
+    container_name: imei_checker_db
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_DB=${NAME_DB}
+      - POSTGRES_USER=${USER_DB}
+      - POSTGRES_PASSWORD=${PASSWORD_DB}
+    ports:
+      - "${EXTERNAL_PORT_DB}:${INNER_PORT_DB}"
+    volumes:
+      - shop_bot_db:/var/lib/postgresql/data
+
+  imei_checker_bot:
+    container_name: imei_checker_bot
+    build:
+      context: .
+    command: sh -c "
+      chmod +x ./wait-for-it.sh &&
+      ./wait-for-it.sh db:${INNER_PORT_DB} --strict &&
+      poetry run alembic upgrade head &&
+      poetry run imei-checker-bot"
+    restart: always
+    depends_on:
+      - db
+
+volumes:
+  shop_bot_db:
